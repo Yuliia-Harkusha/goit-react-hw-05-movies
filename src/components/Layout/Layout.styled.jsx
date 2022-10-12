@@ -9,7 +9,7 @@ export const Container = styled.div`
 export const Header = styled.header`
   background-color: #fafafa;
   padding: 20px;
-  box-shadow: 0 5px 7px rgba(51, 51, 51, 0.23);
+  box-shadow: 0 1px 5px rgba(51, 51, 51, 0.23);
 `;
 
 export const NavBlock = styled.nav`

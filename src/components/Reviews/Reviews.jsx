@@ -1,0 +1,43 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import Loader from 'components/Loader/Loader';
+import { getMovieReviews } from 'services/api';
+import { ReviewItem } from './ReviewItem';
+
+export default function Reviews() {
+  const [review, setReview] = useState(null);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchReviews = async () => {
+      if (!id) {
+        return;
+      }
+      try {
+        setIsLoading(true);
+        const data = await getMovieReviews(id);
+        setReview(data);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchReviews();
+  }, [id]);
+
+  return (
+    <ul>
+      {isLoading && <Loader />}
+      {error && <p>Something went wrong</p>}
+      {review && review.length > 0 ? (
+        <ReviewItem review={review.results} />
+      ) : (
+        <p>There are no reviews for this movie</p>
+      )}
+    </ul>
+  );
+}
