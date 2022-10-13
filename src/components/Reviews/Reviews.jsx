@@ -33,9 +33,9 @@ export default function Reviews() {
     <ul>
       {isLoading && <Loader />}
       {error && <p>Something went wrong</p>}
-      {review && review.length > 0 ? (
-        <ReviewItem review={review.results} />
-      ) : (
+
+      {review && <ReviewItem review={review.results} />}
+      {review && review.results.length === 0 && (
         <p>There are no reviews for this movie</p>
       )}
     </ul>
