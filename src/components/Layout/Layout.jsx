@@ -8,8 +8,10 @@ export default function Layout() {
     <Container>
       <Header>
         <NavBlock>
-          <NavItem to="/">Home</NavItem>
-          <NavItem to="/movie">Movies</NavItem>
+          <NavItem to="/" end>
+            Home
+          </NavItem>
+          <NavItem to="/movies">Movies</NavItem>
         </NavBlock>
       </Header>
 
