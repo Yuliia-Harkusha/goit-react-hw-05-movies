@@ -3,6 +3,7 @@ import { useParams, useNavigate, Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'services/api';
 import Loader from 'components/Loader/Loader';
 import {
+  Wrapper,
   Section,
   Title,
   Image,
@@ -46,28 +47,30 @@ export default function MovieDetails() {
     <main>
       {isLoading && <Loader />}
       {error && <p>Something went wrong</p>}
-      <GoBackBtn onClick={goBack} type="button">
-        Go back
-      </GoBackBtn>
-      {movie && (
-        <Section>
-          <Image src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
-          <div>
-            <Title>{movie.original_title}</Title>
-            <Info>
-              Release date
-              <Text>{movie.release_date}</Text>
-            </Info>
-            <Info>
-              Rating
-              <Text>{movie.vote_average.toFixed(1)}</Text>
-            </Info>
-            <Info>
-              Overview <Text>{movie.overview}</Text>
-            </Info>
-          </div>
-        </Section>
-      )}
+      <Wrapper>
+        <GoBackBtn onClick={goBack} type="button">
+          Go back
+        </GoBackBtn>
+        {movie && (
+          <Section>
+            <Image src={`${IMG_URL}${movie.poster_path}`} alt={movie.title} />
+            <div>
+              <Title>{movie.original_title}</Title>
+              <Info>
+                Release date
+                <Text>{movie.release_date}</Text>
+              </Info>
+              <Info>
+                Rating
+                <Text>{movie.vote_average.toFixed(1)}</Text>
+              </Info>
+              <Info>
+                Overview <Text>{movie.overview}</Text>
+              </Info>
+            </div>
+          </Section>
+        )}
+      </Wrapper>
 
       <NavItem to="cast">Casts</NavItem>
       <NavItem to="reviews">Reviews</NavItem>

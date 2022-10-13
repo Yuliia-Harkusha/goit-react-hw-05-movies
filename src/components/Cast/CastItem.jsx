@@ -6,7 +6,11 @@ export const CastItem = ({ cast }) => {
   return cast.map(({ profile_path, original_name, character }) => {
     return (
       <li key={nanoid()}>
-        <Image src={`${IMG_URL}${profile_path}`} alt={original_name} />
+        {profile_path ? (
+          <Image src={`${IMG_URL}${profile_path}`} alt={original_name} />
+        ) : (
+          <img src="" alt={original_name} />
+        )}
         <Name>{original_name}</Name>
         <Name>Character: {character}</Name>
       </li>

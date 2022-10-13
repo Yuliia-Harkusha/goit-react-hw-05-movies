@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
+export const Wrapper = styled.div`
+  box-shadow: 0 1px 5px rgba(51, 51, 51, 0.23);
+`;
+
 export const GoBackBtn = styled.button`
   display: inline-block;
-  padding: 5px 8px;
-  margin-top: 10px;
+  padding: 5px 10px;
+  margin-top: 15px;
+  margin-bottom: 8px;
   margin-left: 10px;
+  border: solid 1px #a7051e;
+  border-radius: 3px;
+  cursor: pointer;
 
   :hover {
     color: #db2944;

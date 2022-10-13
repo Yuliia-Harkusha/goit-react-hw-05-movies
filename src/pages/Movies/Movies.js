@@ -4,6 +4,7 @@ import { FaSearch } from 'react-icons/fa';
 import { getSearchMovies } from 'services/api';
 import Loader from 'components/Loader/Loader';
 import { MoviesList } from 'components/MoviesList/MoviesList';
+import { Form, Input, Button } from './Movies.styled';
 
 export default function Movies() {
   const [movies, setMovies] = useState([]);
@@ -55,17 +56,17 @@ export default function Movies() {
 
   return (
     <main>
-      <form onSubmit={handleSubmit}>
-        <input
+      <Form onSubmit={handleSubmit}>
+        <Input
           onChange={handleChange}
           type="text"
           autoComplete="off"
           placeholder="Search movie"
         />
-        <button>
-          <FaSearch />
-        </button>
-      </form>
+        <Button>
+          <FaSearch fontSize={16} />
+        </Button>
+      </Form>
       <ul>
         {isLoading && <Loader />}
         {error && <p>Something went wrong</p>}
